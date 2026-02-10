@@ -1,16 +1,41 @@
-# React + Vite
+# TP1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# lien vers la vidéo : https://youtu.be/zSXCRY4b5LE
 
-Currently, two official plugins are available:
+## Fonctionnalites de l'application
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Fonctionnalites principales
 
-## React Compiler
+- Affichage d'une liste de Pokemons avec pagination (20 par page)
+- Recherche de Pokemons par nom
+- Affichage des details d'un Pokemon sur une page specifique
+- Modification des informations d'un Pokemon
+- Suppression d'un Pokemon avec confirmation
+- Creation de nouveaux Pokemons
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Fonctionnalité au choix
 
-## Expanding the ESLint configuration
+- Lecture du son/cri du Pokemon
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Details des fonctionnalites
+
+#### Liste et Pagination
+L'application affiche les Pokemons par groupe de 20. L'utilisateur peut naviguer entre les pages avec les boutons precedent et suivant. Le numero de la page actuelle et le nombre total de pages sont affiches.
+
+#### Recherche
+Une barre de recherche en haut de la page permet de chercher un Pokemon par son nom en anglais ou en francais. Les resultats s'affichent immediatement sans charger une nouvelle page.
+
+#### Page de detail
+En cliquant sur un Pokemon, l'utilisateur accede a une page avec toutes les informations : nom en plusieurs langues, types, stats complete avec barres de progression, et image.
+
+#### Modification
+Sur la page de detail, un bouton permet d'editer : le nom anglais, le nom francais, et toutes les stats du Pokemon. Les modifications sont sauvegardees en base de donnees.
+
+#### Suppression
+Un bouton permet de supprimer le Pokemon. Une fenetre de confirmation s'affiche pour eviter les suppressions accidentelles.
+
+#### Creation
+Une page dedie permet de creer un nouveau Pokemon en remplissant un formulaire avec : nom en plusieurs langues, types (jusqu'a 2), stats de base, et URL de l'image.
+
+#### Son du Pokemon
+Sur la page de detail, un bouton permet d'ecouter le cri officiel du Pokemon desde la base de donnees PokéAPI.

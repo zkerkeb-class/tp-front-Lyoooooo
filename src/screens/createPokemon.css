@@ -1,0 +1,205 @@
+.create-pokemon-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #0056b3;
+}
+
+.create-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.create-card h1 {
+    color: #333;
+    margin-top: 0;
+}
+
+.form-section {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+.types-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.type-btn {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: capitalize;
+}
+
+.type-btn.type-normal { background-color: #A8A878; }
+.type-btn.type-fire { background-color: #F08030; }
+.type-btn.type-water { background-color: #6890F0; }
+.type-btn.type-grass { background-color: #78C850; }
+.type-btn.type-electric { background-color: #F8D030; color: #333; }
+.type-btn.type-ice { background-color: #98D8D8; color: #333; }
+.type-btn.type-fighting { background-color: #C03028; }
+.type-btn.type-poison { background-color: #A040A0; }
+.type-btn.type-ground { background-color: #E0C068; color: #333; }
+.type-btn.type-flying { background-color: #A890F0; }
+.type-btn.type-psychic { background-color: #F85888; }
+.type-btn.type-bug { background-color: #A8B820; }
+.type-btn.type-rock { background-color: #B8A038; }
+.type-btn.type-ghost { background-color: #705898; }
+.type-btn.type-dragon { background-color: #7038F8; }
+.type-btn.type-dark { background-color: #705848; }
+.type-btn.type-steel { background-color: #B8B8D0; color: #333; }
+.type-btn.type-fairy { background-color: #EE99AC; }
+
+.type-btn.selected {
+    border-color: #333;
+    border-width: 2px;
+    transform: scale(1.05);
+}
+
+.type-hint {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    flex: 1;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-create {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-create:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.btn-create:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-cancel {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #5a6268;
+}
+
+@media (max-width: 768px) {
+    .create-card {
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .types-selector {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        flex: 1;
+    }
+}

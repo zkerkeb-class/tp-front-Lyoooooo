@@ -1,28 +1,33 @@
 import { useState, useEffect } from 'react';
 
-const usePokemon = (pokemonUrl) => {
-    const [pokemonData, setPokemonData] = useState([]);
+const usePokemon = (pokemonId) => {
+    const [pokemonData, setPokemonData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        if (!pokemonId) {
+            setLoading(false);
+            return;
+        }
+
         const fetchPokemon = async () => {
             try {
-                const response = await fetch(pokemonUrl);
+                const response = await fetch(`http://localhost:3000/api/pokemons/${pokemonId}`);
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error('Pokemon not found');
                 }
                 const data = await response.json();
                 setPokemonData(data);
             } catch (err) {
-                setError(err);
+                setError(err.message);
             } finally {
                 setLoading(false);
             }
         };
 
         fetchPokemon();
-    }, [pokemonUrl]);
+    }, [pokemonId]);
 
     return { pokemonData, loading, error };
 };
