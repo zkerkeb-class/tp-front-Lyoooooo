@@ -1,44 +1,50 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import usePokemon from "../../hook/usePokemon";
-
 import './index.css';
-import PokeTitle from "./pokeTitle";
-import PokeImage from "./pokeImage";
 
 const PokeCard = ({ pokemon }) => {
-    const {pokemonData, loading} = usePokemon(pokemon.url);
-    console.log('pokeData',pokemonData)
-
-
-    if (loading) {
+    if (!pokemon) {
         return <p>Chargement du Pokémon...</p>;
     }
 
+    // Get the primary type for styling
+    const primaryType = pokemon.type?.[0]?.toLowerCase() || 'normal';
 
     return (
-        <Link to={`/pokemonDetails/${encodeURIComponent(pokemon.url)}`}>
-        <div className="poke-card">
-            <div className={`poke-card-header poke-type-${pokemonData.types?.[0]?.type?.name}`}>
-                <PokeTitle name={pokemon.name} />
+        <Link to={`/pokemonDetails/${pokemon.id}`}>
+            <div className="poke-card">
+                <div className={`poke-card-header poke-type-${primaryType}`}>
+                    <h3 className="poke-title">{pokemon.name?.english || pokemon.name}</h3>
+                    <p className="poke-subtitle">{pokemon.name?.french}</p>
+                </div>
+                <div className="poke-image-background">
+                    <img 
+                        src={pokemon.image} 
+                        alt={pokemon.name?.english}
+                        className="poke-image"
+                    />
+                </div>
+                <div className="poke-stats">
+                    <div className="poke-stat-row">
+                        <span className="stat-label">HP</span>
+                        <span className="stat-value">{pokemon.base?.HP}</span>
+                    </div>
+                    <div className="poke-stat-row">
+                        <span className="stat-label">ATK</span>
+                        <span className="stat-value">{pokemon.base?.Attack}</span>
+                    </div>
+                    <div className="poke-stat-row">
+                        <span className="stat-label">DEF</span>
+                        <span className="stat-value">{pokemon.base?.Defense}</span>
+                    </div>
+                </div>
+                <div className="poke-types">
+                    {pokemon.type?.map((type, index) => (
+                        <span key={index} className={`type-badge type-${type.toLowerCase()}`}>
+                            {type}
+                        </span>
+                    ))}
+                </div>
             </div>
-            <div className="poke-image-background">
-                <PokeImage imageUrl={pokemonData.sprites?.other?.['official-artwork']?.front_default} />
-            </div>
-            <div>
-
-                {pokemonData.stats?.map((stat) => {
-                    return(
-                        <div className="poke-stat-row" key={stat.stat.name}>
-                            <span className={`poke-type-font poke-type-${stat.stat.name}`}>{stat.stat.name}</span>
-
-                            <span className="poke-type-font poke-stat-value">{stat.base_stat}</span>
-                        </div>
-                    ) 
-                })}    
-
-            </div>
-        </div>
         </Link>
     );
 }
